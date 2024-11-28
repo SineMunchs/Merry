@@ -44,22 +44,20 @@ function draw() {
     // Original Christmas colors
     [
       color(255, 0, 0),    // Red
-      color(85, 140, 61),    // Green
-      color(255, 255, 255) // White
+      color(85, 140, 61),   // Green
+      color(255, 255, 255)  // White
     ],
     // Blue winter theme
     [
       color(44, 77, 155),   // Deep Sky Blue
-
     ],
-
   ];
   
   // Select current color scheme
   const colors = colorSchemes[colorMode];
   
   const letters = {
-    'M': [
+  'M': [
       [1,0,0,0,1],
       [1,1,0,1,1],
       [1,0,1,0,1],
@@ -131,8 +129,8 @@ function draw() {
     ]
   };
 
-  // Changed variable name from 'text' to 'message'
-  const message = "MERRY CHRISTMAS";
+  // Changed text to switch between messages based on colorMode
+  const message = colorMode === 0 ? "MERRY CHRISTMAS" : "MERRY CRISIS💙";
   let totalWidth = 0;
   
   // Calculate total width
