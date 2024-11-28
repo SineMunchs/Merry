@@ -13,14 +13,24 @@ function setup() {
     snowflakes.push({
       x: random(width),
       y: random(height),
-      speed: random(1, 2)
+      speed: random(1, 3)
     });
   }
 }
 
 function mousePressed() {
-  // Change color mode when mouse is pressed
-  colorMode = (colorMode + 1) % 2; // Cycle through 3 different color schemes
+  changeColor();
+}
+
+function touchStarted() {
+  changeColor();
+  // Prevent default touch behavior
+  return false;
+}
+
+function changeColor() {
+  // Change color mode when mouse is pressed or screen is touched
+  colorMode = (colorMode + 1) % 3; // Cycle through 3 different color schemes
 }
 
 function draw() {
@@ -34,15 +44,13 @@ function draw() {
     // Original Christmas colors
     [
       color(255, 0, 0),    // Red
-      color(85, 140, 61),    // Green
+      color(0, 255, 0),    // Green
       color(255, 255, 255) // White
     ],
     // Blue winter theme
     [
       color(44, 77, 155),   // Deep Sky Blue
-     
     ]
-
   ];
   
   // Select current color scheme
