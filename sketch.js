@@ -1,5 +1,5 @@
 let snowflakes = [];
-let colorMode = 0; // Add this variable to track color mode
+let colorMode = 0;
 
 function setup() {
   createCanvas(1024, 1024);
@@ -30,7 +30,7 @@ function touchStarted() {
 
 function changeColor() {
   // Change color mode when mouse is pressed or screen is touched
-  colorMode = (colorMode + 1) % 3; // Cycle through 3 different color schemes
+  colorMode = (colorMode + 1) % 2;
 }
 
 function draw() {
@@ -44,13 +44,15 @@ function draw() {
     // Original Christmas colors
     [
       color(255, 0, 0),    // Red
-      color(0, 255, 0),    // Green
+      color(85, 140, 61),    // Green
       color(255, 255, 255) // White
     ],
     // Blue winter theme
     [
       color(44, 77, 155),   // Deep Sky Blue
-    ]
+
+    ],
+
   ];
   
   // Select current color scheme
@@ -129,14 +131,16 @@ function draw() {
     ]
   };
 
-  // Center text
-  const text = "MERRY CHRISTMAS";
+  // Changed variable name from 'text' to 'message'
+  const message = "MERRY CHRISTMAS";
   let totalWidth = 0;
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === ' ') {
+  
+  // Calculate total width
+  for (let i = 0; i < message.length; i++) {
+    if (message[i] === ' ') {
       totalWidth += pixelSize * 3;
-    } else {
-      totalWidth += (letters[text[i]][0].length + 1) * pixelSize;
+    } else if (letters[message[i]]) {
+      totalWidth += (letters[message[i]][0].length + 1) * pixelSize;
     }
   }
   
@@ -147,15 +151,18 @@ function draw() {
   let y = height/2 + bounce;
   
   // Draw letters
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === ' ') {
+  for (let i = 0; i < message.length; i++) {
+    if (message[i] === ' ') {
       x += pixelSize * 3;
       continue;
     }
-    const letter = letters[text[i]];
+    const letter = letters[message[i]];
+    if (!letter) continue; // Skip if letter pattern is not defined
+    
     const currentColor = colors[i % colors.length];
     fill(currentColor);
     noStroke();
+    
     for (let row = 0; row < letter.length; row++) {
       for (let col = 0; col < letter[row].length; col++) {
         if (letter[row][col]) {
