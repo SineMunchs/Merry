@@ -2,7 +2,7 @@ let snowflakes = [];
 let colorMode = 0; // Add this variable to track color mode
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(1024, 1024);
   background(0);
   noSmooth();
   pixelDensity(1);
@@ -37,7 +37,7 @@ function draw() {
   background(0);
   
   // Pixel size for letters
-  const pixelSize = 6;
+  const pixelSize = 10;
   
   // Different color schemes
   const colorSchemes = [
